@@ -155,26 +155,17 @@ def nestedSimulation(M, N, d, S_0, K, mu, sigma, rho, r, tau, T, option_name, op
 
     for k, n, t, p in zip(K, option_name, option_type, position):
 
-        multiplier_position = 1 if p == "long" else -1
-        
-        if n == "Barrier":
+        if n == "European":
+            value_0 += optionPricing.priceVanilla(S_0, T, sigma, r, k, 0, t, p)
+        elif n == "Asian":
+            value_0 += optionPricing.priceDiscreteGeoAsian_0(S_0, T, sigma, r, k, 0, t, p)
+        elif n == "Barrier":
             value_0 += optionPricing.priceBarrier_0(S_0, T, sigma, r, k, 0, t, p)
-            value_tau += multiplier_position * np.mean(helper.calculatePayoff(outerScenarios, innerPaths, k, r, tau, T, n, t,
-                                                                              [sigma, barrier, step_size]), axis=0)
-        
-        else:   
-
-            multiplier_CP = 1 if t == "C" else -1
-
-            if n == "European":
-                value_0 += optionPricing.priceVanilla(S_0, T, sigma, r, k, 0, t, p)
-                value_tau += multiplier_position * np.sum(np.mean(np.maximum(multiplier_CP * (innerPaths - k), 0), axis=2) * np.exp(-r * (T - tau)), axis=0)
-            elif n == "Asian":
-                value_0 += optionPricing.priceDiscreteGeoAsian_0(S_0, T, sigma, r, k, 0, t, p)
-                value_tau += multiplier_position * np.sum(np.mean(np.maximum(multiplier_CP * (np.mean(innerPaths, axis=3) - k), 0), axis=2) * np.exp(-r * (T - tau)), axis=0)
-
-            else:
-                raise ValueError("Option name not recognized.")
+        else:
+            raise ValueError("Option name not recognized.")
+    
+    value_tau = helper.calculatePayoff(outerScenarios, innerPaths, K, option_name, option_type, position, 
+                                       barrier_info=[sigma, barrier, step_size])
 
     loss = d * value_0 - value_tau
 

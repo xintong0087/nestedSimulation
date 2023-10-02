@@ -290,7 +290,9 @@ def kernelRidge(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type,
     return y_test
 
 
-def crossValidation(X, y, model_name):
+def crossValidation(X, y, model_name, n_splits=5):
+    
+    cv = KFold(n_splits=n_splits)
 
     if model_name == "kNN":
             

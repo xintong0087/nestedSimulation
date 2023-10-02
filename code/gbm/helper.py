@@ -33,7 +33,8 @@ def biNormCDF(x, y, rho):
     return multinorm.cdf([x, y], mean=[0, 0], cov=rho_mat)
 
 
-def calculatePayoff(outerScenarios, innerPaths, K, r, tau, T, option_name="Vanilla", option_type="C",
+def calculatePayoff(outerScenarios, innerPaths, K, r, tau, T, 
+                    option_name=["European"], option_type=["C"], position=["long"],
                     barrier_info=None):
 
     """
@@ -44,8 +45,18 @@ def calculatePayoff(outerScenarios, innerPaths, K, r, tau, T, option_name="Vanil
     :param K: strike price, a list of strike prices for different options
     :param option_type: option type, a list of types for different options
 
-    :return: payoff of the option for each scenario, averaged over the inner paths
+    :return: payoff of the option for each scenario, averaged over the inner paths, 
+                                                     summed over the assets.
     """
+
+    if len(option_name) != len(K):
+        option_name = option_name * len(K)
+        
+    if len(option_type) != len(K):
+        option_type = option_type * len(K)
+
+    if len(position) != len(K):
+        position = position * len(K)
 
     payoff = np.zeros([d, M, N])
 
@@ -54,27 +65,28 @@ def calculatePayoff(outerScenarios, innerPaths, K, r, tau, T, option_name="Vanil
         # outerScenarios.shape = [d, M]
         # innerPaths.shape = [d, M, N]
 
-        for k, o in zip(K, option_type):
-            if o != "P":
-                payoff += np.maximum(innerPaths - k, 0) 
-            else:
-                payoff += np.maximum(k - innerPaths, 0) 
+        for k, n, t, p in zip(K, option_name, option_type, position):
+
+            multiplier_position = 1 if p == "long" else -1
+            multiplier_CP = 1 if t == "C" else -1
+
+            payoff += multiplier_position * np.sum(np.maximum(multiplier_CP * (innerPaths - k), 0) * np.exp(-r * (T - tau)), axis=0)
 
     elif option_name == "Asian":
 
         # outerScenarios.shape = [d, M, n_step(0->tau) + 1]
         # innerPaths.shape = [d, M, N, n_step(tau->T) + 1]
 
+        multiplier_position = 1 if p == "long" else -1
+        multiplier_CP = 1 if t == "C" else -1
+
         n_step = outerScenarios.shape[2] + innerPaths.shape[3] - 2
 
         geometric_sum_outer = np.expand_dims(np.prod(outerScenarios[:, :, 1:], axis=2), axis=2)
         geometric_sum_inner = np.prod(innerPaths[:, :, :, 1:], axis=3)
 
-        for k, o in zip(K, option_type):
-            if o != "P":
-                payoff += np.maximum((geometric_sum_outer * geometric_sum_inner) ** (1 / n_step) - k, 0) 
-            else:
-                payoff += np.maximum(k - (geometric_sum_outer * geometric_sum_inner) ** (1 / n_step), 0) 
+        for k, n, t, p in zip(K, option_name, option_type, position):
+            payoff += np.maximum(multiplier_CP * ((geometric_sum_outer * geometric_sum_inner) ** (1 / n_step) - k), 0) 
 
     elif option_name == "Barrier":
 
@@ -125,26 +137,23 @@ def calculatePayoff(outerScenarios, innerPaths, K, r, tau, T, option_name="Vanil
         inner_min = np.min(sample_inner_min, axis=3)
 
         # Calculate the payoff
+        
         S_T = innerPaths[:, :, :, -1]
-        for k, h, o in zip(K, H, option_type):
-            if o == "DOP":
-                payoff += (outer_min > h) * (inner_min > h) * np.maximum(k - S_T, 0) 
-            elif o == "DOC":
-                payoff += (outer_min > h) * (inner_min > h) * np.maximum(S_T - k, 0)
-            elif o == "DIP":
-                payoff += (outer_min < h) * (inner_min < h) * np.maximum(k - S_T, 0)
-            elif o == "DIC":
-                payoff += (outer_min < h) * (inner_min < h) * np.maximum(S_T - K, 0)
-            elif o == "UOP":
-                payoff += (outer_max < h) * (inner_max < h) * np.maximum(k - S_T, 0)
-            elif o == "UOC":
-                payoff += (outer_max < h) * (inner_max < h) * np.maximum(S_T - k, 0)
-            elif o == "UIP":
-                payoff += (outer_max > h) * (inner_max > h) * np.maximum(k - S_T, 0)
-            elif o == "UIC":
-                payoff += (outer_max > h) * (inner_max > h) * np.maximum(S_T - k, 0)
+        for k, h, t, p in zip(K, H, option_type, position):
+
+            multiplier_position = 1 if p == "long" else -1
+            multiplier_CP = 1 if "C" in t else -1
+
+            if "DO" in t:
+                payoff += multiplier_position * (outer_min > h) * (inner_min > h) * np.maximum(multiplier_CP * (S_T - k), 0) 
+            elif "DI" in t:
+                payoff += multiplier_position * (outer_min < h) * (inner_min < h) * np.maximum(multiplier_CP * (S_T - k), 0)
+            elif "UO" in t:
+                payoff += multiplier_position * (outer_max < h) * (inner_max < h) * np.maximum(multiplier_CP * (S_T - k), 0)
+            elif "UI" in t:
+                payoff += multiplier_position * (outer_max > h) * (inner_max > h) * np.maximum(multiplier_CP * (S_T - k), 0)
                  
-    return np.exp(-r * (T - tau)) * np.mean(payoff, axis=2) 
+    return np.sum(np.exp(-r * (T - tau)) * np.mean(payoff, axis=2), axis=0)
 
 
 def calculateRMSE(threshold, y_pred, alpha):

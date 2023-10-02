@@ -235,4 +235,50 @@ def regression(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type, 
     return y_test
 
 
-    
+def kNN(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type, position, test=False):
+
+    """
+    Asian and Barrier not supported yet. Using placeholders for now.
+    """
+
+    outerScenarios, loss = sns.nestedSimulation(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type, position)
+
+    X_train = generate_basis(outerScenarios, option_type=option_type)
+    y_train = loss
+
+    kNN = KNeighborsRegressor(n_neighbors=100).fit(X_train, y_train)
+
+    if test:
+        outerScenarios = sns.simOuter(M, d, S_0, mu, sigma, tau)
+        X_test = generate_basis(outerScenarios)
+    else:
+        X_test = X_train
+
+    y_test = kNN.predict(X_test)
+
+    return y_test
+
+
+def kernelRidge(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type, position, test=False):
+
+    """
+    Asian and Barrier not supported yet. Using placeholders for now.
+    """
+
+    outerScenarios, loss = sns.nestedSimulation(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type, position)
+
+    X_train = generate_basis(outerScenarios, option_type=option_type)
+    y_train = loss
+
+    kernelRidge = KernelRidge(alpha=0.01, kernel=Matern(length_scale=1, nu=0.5)).fit(X_train, y_train)
+
+    if test:
+        outerScenarios = sns.simOuter(M, d, S_0, mu, sigma, tau)
+        X_test = generate_basis(outerScenarios)
+    else:
+        X_test = X_train
+
+    y_test = kernelRidge.predict(X_test)
+
+    return y_test
+

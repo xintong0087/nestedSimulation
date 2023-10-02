@@ -11,6 +11,8 @@ from sklearn.model_selection import KFold
 from skopt import BayesSearchCV
 from skopt.space import Real
 
+import sns
+
 
 def fitSL(outerScenarios, payoff, model_name, hyperparameters=None):
 
@@ -207,3 +209,30 @@ def generate_basis(sample_outer, option_type="Vanilla",
         X_train = X_train.T
 
     return X_train
+
+
+def regression(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type, position, test=False):
+
+    """
+    Asian and Barrier not supported yet. Using placeholders for now.
+    """
+
+    outerScenarios, loss = sns.nestedSimulation(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type, position)
+
+    X_train = generate_basis(outerScenarios, option_type=option_type)
+    y_train = loss
+
+    reg = LinearRegression().fit(X_train, y_train)
+
+    if test:
+        outerScenarios = sns.simOuter(M, d, S_0, mu, sigma, tau)
+        X_test = generate_basis(outerScenarios)
+    else:
+        X_test = X_train
+
+    y_test = reg.predict(X_test)
+
+    return y_test
+
+
+    

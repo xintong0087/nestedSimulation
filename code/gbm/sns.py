@@ -1,6 +1,9 @@
 import numpy as np
 from scipy.stats.distributions import norm
 
+import helper
+import optionPricing
+
 
 def simOuter(M, d, S0, drift, diffusion, tau, step_size=1/253, path=False):
 
@@ -118,3 +121,59 @@ def simInner(M, N, d, outerScenarios, drift, diffusion, T, step_size=1/253, path
     return innerPaths
 
 
+def nestedSimulation(M, N, d, S_0, K, mu, sigma, rho, r, tau, T, option_name, option_type, position, path=False):
+
+    """
+    Asian and Barrier not supported yet. Place holder for now.
+
+    return:
+        outerScenarios: [d, M, n_step + 1] if path else [d, M]
+        loss: [M]
+    """
+
+    if len(option_name) != len(K):
+        option_name = option_name * len(K)
+        
+    if len(option_type) != len(K):
+        option_type = option_type * len(K)
+
+    if len(position) != len(K):
+        position = position * len(K)
+    
+    if ("Asian" in option_name) or ("Barrier" in option_name):
+        path = True
+
+    cov_mat = helper.generate_cor_mat(d, rho) * sigma ** 2
+
+    outerScenarios = simOuter(M, d, S_0, mu, cov_mat, tau, path=path)
+
+    innerPaths = simInner(M, N, d, outerScenarios, r, cov_mat, T - tau, path=path)
+
+    value_0 = 0
+    value_tau = np.zeros(M)
+
+    for k, n, t, p in zip(K, option_name, option_type, position):
+        
+        if n == "Barrier":
+            value_0 += optionPricing.priceBarrier_0(S_0, T, sigma, r, k, 0, t, p)
+            value_tau += np.mean(np.maximum(np.max(innerPaths, axis=3) - k, 0), axis=2) * np.exp(-r * (T - tau))
+        
+        else:   
+
+            multiplier_CP = 1 if t == "C" else -1
+
+            multiplier_position = 1 if p == "long" else -1
+
+            if n == "European":
+                value_0 += optionPricing.priceVanilla(S_0, T, sigma, r, k, 0, t, p)
+                value_tau += multiplier_position * np.sum(np.mean(np.maximum(multiplier_CP * (innerPaths - k), 0), axis=2) * np.exp(-r * (T - tau)), axis=0)
+            elif n == "Asian":
+                value_0 += optionPricing.priceDiscreteGeoAsian_0(S_0, T, sigma, r, k, 0, t, p)
+                value_tau += multiplier_position * np.sum(np.mean(np.maximum(multiplier_CP * (np.mean(innerPaths, axis=3) - k), 0), axis=2) * np.exp(-r * (T - tau)), axis=0)
+
+            else:
+                raise ValueError("Option name not recognized.")
+
+    loss = d * value_0 - value_tau
+
+    return outerScenarios, loss

@@ -121,7 +121,8 @@ def simInner(M, N, d, outerScenarios, drift, diffusion, T, step_size=1/253, path
     return innerPaths
 
 
-def nestedSimulation(M, N, d, S_0, K, mu, sigma, rho, r, tau, T, option_name, option_type, position, path=False):
+def nestedSimulation(M, N, d, S_0, K, mu, sigma, rho, r, tau, T, option_name, option_type, position, 
+                     path=False, barrier=None, step_size=1/253):
 
     """
     Asian and Barrier not supported yet. Place holder for now.
@@ -145,24 +146,25 @@ def nestedSimulation(M, N, d, S_0, K, mu, sigma, rho, r, tau, T, option_name, op
 
     cov_mat = helper.generate_cor_mat(d, rho) * sigma ** 2
 
-    outerScenarios = simOuter(M, d, S_0, mu, cov_mat, tau, path=path)
+    outerScenarios = simOuter(M, d, S_0, mu, cov_mat, tau, step_size=step_size, path=path)
 
-    innerPaths = simInner(M, N, d, outerScenarios, r, cov_mat, T - tau, path=path)
+    innerPaths = simInner(M, N, d, outerScenarios, r, cov_mat, T - tau, step_size=step_size, path=path)
 
     value_0 = 0
     value_tau = np.zeros(M)
 
     for k, n, t, p in zip(K, option_name, option_type, position):
+
+        multiplier_position = 1 if p == "long" else -1
         
         if n == "Barrier":
             value_0 += optionPricing.priceBarrier_0(S_0, T, sigma, r, k, 0, t, p)
-            value_tau += np.mean(np.maximum(np.max(innerPaths, axis=3) - k, 0), axis=2) * np.exp(-r * (T - tau))
+            value_tau += multiplier_position * np.mean(helper.calculatePayoff(outerScenarios, innerPaths, k, r, tau, T, n, t,
+                                                                              [sigma, barrier, step_size]), axis=0)
         
         else:   
 
             multiplier_CP = 1 if t == "C" else -1
-
-            multiplier_position = 1 if p == "long" else -1
 
             if n == "European":
                 value_0 += optionPricing.priceVanilla(S_0, T, sigma, r, k, 0, t, p)

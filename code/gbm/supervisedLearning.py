@@ -235,7 +235,7 @@ def regression(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type, 
     return y_test
 
 
-def kNN(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type, position, test=False):
+def kNN(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type, position, test=False, cv=False, k_opt=100):
 
     """
     Asian and Barrier not supported yet. Using placeholders for now.
@@ -246,7 +246,10 @@ def kNN(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type, positio
     X_train = generate_basis(outerScenarios, option_type=option_type)
     y_train = loss
 
-    kNN = KNeighborsRegressor(n_neighbors=100).fit(X_train, y_train)
+    if cv:
+        k_opt = crossValidation(X_train, y_train, "kNN")
+        
+    kNN = KNeighborsRegressor(n_neighbors=k_opt).fit(X_train, y_train)
 
     if test:
         outerScenarios = sns.simOuter(M, d, S_0, mu, sigma, tau)
@@ -259,7 +262,8 @@ def kNN(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type, positio
     return y_test
 
 
-def kernelRidge(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type, position, test=False):
+def kernelRidge(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type, position, test=False, cv=False,
+                alpha_opt=0.01, l_opt=1, nu_opt=0.5):
 
     """
     Asian and Barrier not supported yet. Using placeholders for now.
@@ -270,7 +274,10 @@ def kernelRidge(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type,
     X_train = generate_basis(outerScenarios, option_type=option_type)
     y_train = loss
 
-    kernelRidge = KernelRidge(alpha=0.01, kernel=Matern(length_scale=1, nu=0.5)).fit(X_train, y_train)
+    if cv:
+        alpha_opt, l_opt, nu_opt = crossValidation(X_train, y_train, "kernelRidge")
+
+    kernelRidge = KernelRidge(alpha=alpha_opt, kernel=Matern(length_scale=l_opt, nu=nu_opt)).fit(X_train, y_train)
 
     if test:
         outerScenarios = sns.simOuter(M, d, S_0, mu, sigma, tau)
@@ -282,3 +289,48 @@ def kernelRidge(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type,
 
     return y_test
 
+
+def crossValidation(X, y, model_name):
+
+    if model_name == "kNN":
+            
+        k_range = np.arange(100, 301, 50)
+        n_k = k_range.shape[0]
+        cv_score = np.zeros(n_k)    
+
+        for k in range(n_k):
+            for train_ind, val_ind in cv.split(X, y):
+                X_train = X[train_ind]
+                X_val = X[val_ind]
+                y_train = y[train_ind]
+                y_val = y[val_ind]
+
+                y_hat = KNeighborsRegressor(n_neighbors=k_range[k]).fit(X_train, y_train).predict(X_val)
+                cv_score[k] = cv_score[k] + np.sum((y_hat - y_val) ** 2)
+
+        k_opt = k_range[np.argmin(cv_score)]
+
+        res = k_opt
+    
+    elif model_name == "kernelRidge":
+
+        param_distributions = {"alpha": Real(1e-5, 1e-1, "log-uniform"),
+                               "kernel__length_scale": Real(1e-3, 1e3, "log-uniform"),
+                               "kernel__nu": Real(5e-1, 5e0, "log-uniform")}
+        
+        bayesian_search = BayesSearchCV(estimator=KernelRidge(kernel=Matern()),
+                                        search_spaces=param_distributions, n_jobs=20, cv=cv)
+        
+        bayesian_search.fit(X, y)
+
+        alpha = bayesian_search.best_params_["alpha"]
+        l = bayesian_search.best_params_["kernel__length_scale"]
+        nu = bayesian_search.best_params_["kernel__nu"]
+
+        res = [alpha, l, nu]
+    
+    else:
+
+        raise ValueError("Model name not recognized.")
+    
+    return res

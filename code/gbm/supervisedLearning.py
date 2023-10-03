@@ -211,13 +211,13 @@ def generate_basis(sample_outer, option_type="Vanilla",
     return X_train
 
 
-def regression(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type, position, test=False):
+def regression(M, N, d, S_0, K, mu, sigma, rho, r, tau, T, option_name, option_type, position, test=False):
 
     """
     Asian and Barrier not supported yet. Using placeholders for now.
     """
 
-    outerScenarios, loss = sns.nestedSimulation(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type, position)
+    outerScenarios, loss = sns.nestedSimulation(M, N, d, S_0, K, mu, sigma, rho, r, tau, T, option_name, option_type, position)
 
     X_train = generate_basis(outerScenarios, option_type=option_type)
     y_train = loss
@@ -235,13 +235,13 @@ def regression(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type, 
     return y_test
 
 
-def kNN(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type, position, test=False, cv=False, k_opt=100):
+def kNN(M, N, d, S_0, K, mu, sigma, rho, r, tau, T, option_name, option_type, position, test=False, cv=False, k_opt=100):
 
     """
     Asian and Barrier not supported yet. Using placeholders for now.
     """
 
-    outerScenarios, loss = sns.nestedSimulation(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type, position)
+    outerScenarios, loss = sns.nestedSimulation(M, N, d, S_0, K, mu, sigma, rho, r, tau, T, option_name, option_type, position)
 
     X_train = generate_basis(outerScenarios, option_type=option_type)
     y_train = loss
@@ -262,14 +262,14 @@ def kNN(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type, positio
     return y_test
 
 
-def kernelRidge(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type, position, test=False, cv=False,
+def kernelRidge(M, N, d, S_0, K, mu, sigma, rho, r, tau, T, option_name, option_type, position, test=False, cv=False,
                 alpha_opt=0.01, l_opt=1, nu_opt=0.5):
 
     """
     Asian and Barrier not supported yet. Using placeholders for now.
     """
 
-    outerScenarios, loss = sns.nestedSimulation(M, N, d, S_0, K, mu, sigma, r, tau, T, option_name, option_type, position)
+    outerScenarios, loss = sns.nestedSimulation(M, N, d, S_0, K, mu, sigma, rho, r, tau, T, option_name, option_type, position)
 
     X_train = generate_basis(outerScenarios, option_type=option_type)
     y_train = loss
@@ -336,3 +336,5 @@ def crossValidation(X, y, model_name, n_splits=5):
         raise ValueError("Model name not recognized.")
     
     return res
+
+print(regression(100, 100, 1, 100, [100], 0.1, 0.2, 1, 0.05, 0.5, 1, ["European"], ["Vanilla"], ["Long"], test=True))

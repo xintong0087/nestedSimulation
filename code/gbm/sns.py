@@ -155,6 +155,8 @@ def nestedSimulation(M, N, d, S_0, K, mu, sigma, rho, r, tau, T, option_name, op
 
     for k, n, t, p in zip(K, option_name, option_type, position):
 
+        print(k, n, t, p)
+
         if n == "European":
             value_0 += optionPricing.priceVanilla(S_0, T, sigma, r, k, 0, t, p)
         elif n == "Asian":

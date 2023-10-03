@@ -57,10 +57,14 @@ def calculatePayoff(outerScenarios, innerPaths, K, r, tau, T,
 
     if len(position) != len(K):
         position = position * len(K)
+    
+    d = outerScenarios.shape[0]
+    M = outerScenarios.shape[1]
+    N = innerPaths.shape[2]
 
     payoff = np.zeros([d, M, N])
-
-    if option_name == "Vanilla":
+    
+    if option_name == "European":
 
         # outerScenarios.shape = [d, M]
         # innerPaths.shape = [d, M, N]
@@ -70,7 +74,7 @@ def calculatePayoff(outerScenarios, innerPaths, K, r, tau, T,
             multiplier_position = 1 if p == "long" else -1
             multiplier_CP = 1 if t == "C" else -1
 
-            payoff += multiplier_position * np.sum(np.maximum(multiplier_CP * (innerPaths - k), 0) * np.exp(-r * (T - tau)), axis=0)
+            payoff += multiplier_position * np.maximum(multiplier_CP * (innerPaths - k), 0) * np.exp(-r * (T - tau))
 
     elif option_name == "Asian":
 

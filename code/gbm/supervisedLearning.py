@@ -12,6 +12,7 @@ from skopt import BayesSearchCV
 from skopt.space import Real
 
 import sns
+import helper
 
 
 def fitSL(outerScenarios, payoff, model_name, hyperparameters=None):
@@ -225,7 +226,8 @@ def regression(M, N, d, S_0, K, mu, sigma, rho, r, tau, T, option_name, option_t
     reg = LinearRegression().fit(X_train, y_train)
 
     if test:
-        outerScenarios = sns.simOuter(M, d, S_0, mu, sigma, tau)
+        cov_mat = helper.generate_cor_mat(d, rho) * sigma ** 2
+        outerScenarios = sns.simOuter(M, d, S_0, mu, cov_mat, tau)
         X_test = generate_basis(outerScenarios)
     else:
         X_test = X_train
@@ -337,4 +339,4 @@ def crossValidation(X, y, model_name, n_splits=5):
     
     return res
 
-print(regression(100, 100, 1, 100, [100], 0.1, 0.2, 1, 0.05, 0.5, 1, ["European"], ["Vanilla"], ["Long"], test=True))
+print(regression(100, 100, 2, 100, [100], 0.1, 0.2, 0.3, 0.05, 0.5, 1, ["European"], ["C"], ["Long"], test=True))

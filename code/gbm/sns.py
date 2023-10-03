@@ -28,7 +28,6 @@ def simOuter(M, d, S0, drift, diffusion, tau, step_size=1/253, path=False):
             dimension 0: d, number of assets
             dimension 1: M, number of scenarios
     """
-
     drift = np.full(d, drift)
     diffusion = np.array(diffusion)
     A = np.linalg.cholesky(diffusion)
@@ -155,8 +154,6 @@ def nestedSimulation(M, N, d, S_0, K, mu, sigma, rho, r, tau, T, option_name, op
 
     for k, n, t, p in zip(K, option_name, option_type, position):
 
-        print(k, n, t, p)
-
         if n == "European":
             value_0 += optionPricing.priceVanilla(S_0, T, sigma, r, k, 0, t, p)
         elif n == "Asian":
@@ -166,7 +163,7 @@ def nestedSimulation(M, N, d, S_0, K, mu, sigma, rho, r, tau, T, option_name, op
         else:
             raise ValueError("Option name not recognized.")
     
-    value_tau = helper.calculatePayoff(outerScenarios, innerPaths, K, option_name, option_type, position, 
+    value_tau = helper.calculatePayoff(outerScenarios, innerPaths, K, r, tau, T, option_name, option_type, position, 
                                        barrier_info=[sigma, barrier, step_size])
 
     loss = d * value_0 - value_tau

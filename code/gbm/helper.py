@@ -64,13 +64,14 @@ def calculatePayoff(outerScenarios, innerPaths, K, r, tau, T,
 
     payoff = np.zeros([d, M, N])
     
-    if option_name == "European":
+    if option_name == ["European"]:
 
         # outerScenarios.shape = [d, M]
         # innerPaths.shape = [d, M, N]
 
         for k, n, t, p in zip(K, option_name, option_type, position):
 
+            
             multiplier_position = 1 if p == "long" else -1
             multiplier_CP = 1 if t == "C" else -1
 

@@ -161,7 +161,7 @@ def calculatePayoff(outerScenarios, innerPaths, K, r, tau, T,
     return np.sum(np.exp(-r * (T - tau)) * np.mean(payoff, axis=2), axis=0)
 
 
-def calculateRMSE(threshold, y_pred, alpha):
+def calculateRM(threshold, y_pred, alpha):
 
     """
     Calculate the RMSE between the true value and the predicted value.
@@ -182,3 +182,6 @@ def calculateRMSE(threshold, y_pred, alpha):
     CVaR = np.mean(y_pred[y_pred >= VaR])
 
     return indicator, hockey, quadratic, VaR, CVaR
+
+
+def runMacro(model_name)

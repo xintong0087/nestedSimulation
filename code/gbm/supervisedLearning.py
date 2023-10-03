@@ -234,6 +234,8 @@ def regression(M, N, d, S_0, K, mu, sigma, rho, r, tau, T, option_name, option_t
 
     y_test = reg.predict(X_test)
 
+    # indicator, hockey, quadratic, VaR, CVaR = helper.calculateRM(y_test, 0.95, 0.05)
+
     return y_test
 
 

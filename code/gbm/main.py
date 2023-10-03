@@ -1,9 +1,10 @@
 import simTrue
-import optionPricing
+import supervisedLearning
 
 
 # Common parameters for underlying asset
-M = 10 ** 2
+M = 10 ** 5
+N = 1
 d = 20 
 rho = 0.3
 S_0 = 100
@@ -38,9 +39,14 @@ elif portfolio == 3:
     sigma = 0.2
     option_name=["Barrier"]
 
-res = simTrue.simulateTrueValues(M, d, rho, S_0, K, mu, sigma, r, tau, T,
-                                 levels=levels, benchmark=benchmark,
-                                 option_name=option_name, option_type=option_type,
-                                 position=position, n_jobs=n_jobs, verbose=verbose)
+# res = simTrue.simulateTrueValues(M, d, rho, S_0, K, mu, sigma, r, tau, T,
+#                                  levels=levels, benchmark=benchmark,
+#                                  option_name=option_name, option_type=option_type,
+#                                  position=position, n_jobs=n_jobs, verbose=verbose)
 
-print(res)
+# print(res)
+
+
+res_reg = supervisedLearning.regression(M, N, d, S_0, K, mu, sigma, rho, r, tau, T,
+                                            option_name=option_name, option_type=option_type,
+                                            position=position, test=False)

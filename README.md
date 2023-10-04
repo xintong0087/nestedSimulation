@@ -2,6 +2,14 @@
 
 ## Scripts and Functions
 
+* `main.py` - main script to run the nested simulation procedure
+* `optionPricing.py` - functions for calculating option values
+* `simTrueValues.py` - functions for calculating true values of risk measures
+* `sns.py` - functions for the standard nested simulation procedure
+* `supervisedLearning.py` - functions for supervised learning
+* `likelihoodRatio.py` - functions for likelihood ratio
+* `helpers.py` - helper functions
+
 ## Module 1 - Calculate True Values of Risk Measures
 
 1. Calculate the portfolio value at time 0 using analytical formula.
@@ -49,3 +57,4 @@
 2. Depending on the choice of nested simulation procedure, do Module 2, 3, or 4 for 1000 macro replications.
     * Record the squared errors for all risk measure estimates.
 3. Calculate the MSE as the average of the squared errors.
+ 

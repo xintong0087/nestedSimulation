@@ -184,6 +184,14 @@ def calculateRM(threshold, y_pred, alpha):
     return indicator, hockey, quadratic, VaR, CVaR
 
 
-def runMacro(model_name):
+def runMacro(procedure_name, n_replications, user_input):
 
-    
+    """
+    Run macro replications of a specified nested simulation procedure.
+
+    :param model_name: name of the nested simulation procedure
+    :param n_replications: number of macro replications
+    :param user_input: user input in a python dictionary, contains all the parameters for the nested simulation procedure
+    """
+
+    return None

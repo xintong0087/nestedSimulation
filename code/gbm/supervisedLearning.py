@@ -340,5 +340,3 @@ def crossValidation(X, y, model_name, n_splits=5):
         raise ValueError("Model name not recognized.")
     
     return res
-
-print(regression(100, 100, 2, 100, [100], 0.1, 0.2, 0.3, 0.05, 0.5, 1, ["European"], ["C"], ["Long"], test=True))

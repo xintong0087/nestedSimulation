@@ -184,4 +184,6 @@ def calculateRM(threshold, y_pred, alpha):
     return indicator, hockey, quadratic, VaR, CVaR
 
 
-def runMacro(model_name)
+def runMacro(model_name):
+
+    

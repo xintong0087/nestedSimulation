@@ -13,7 +13,7 @@ def compute_Weight_U(sample_inner_tau, sample_outer_test, r, sigma, h):
     return (log_ratio - (r - sigma ** 2 / 2) * h) ** 2 / (2 * sigma ** 2 * h)
 
 
-def likelihoodRatio(M, N, d, S_0, K, mu, sigma, rho, r, tau, T, option_name, option_type, position):
+def nestedSimulationLR(M, N, d, S_0, K, mu, sigma, rho, r, tau, T, option_name, option_type, position):
 
     """
     Implements the nested simulation procedure with likelihood ratio

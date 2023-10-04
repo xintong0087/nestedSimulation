@@ -4,6 +4,7 @@
 
 * `main.py` - main script to run the nested simulation procedure
 * `optionPricing.py` - functions for calculating option values
+    * `priceVanilla`: price vanilla options given the current asset price
 * `simTrueValues.py` - functions for calculating true values of risk measures
 * `sns.py` - functions for the standard nested simulation procedure
 * `supervisedLearning.py` - functions for supervised learning

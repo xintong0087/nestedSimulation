@@ -1,0 +1,49 @@
+\begin{thebibliography}{7}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Broadie et~al.(2015)Broadie, Du, and Moallemi]{broadie2015risk}
+Mark Broadie, Yiping Du, and Ciamac~C Moallemi.
+\newblock Risk estimation via regression.
+\newblock \emph{Operations Research}, 63\penalty0 (5):\penalty0 1077--1097,
+  2015.
+
+\bibitem[Feng and Song(2020)]{feng2020optimal}
+Mingbin Feng and Eunhye Song.
+\newblock Optimal nested simulation experiment design via likelihood ratio
+  method.
+\newblock \emph{arXiv preprint arXiv:2008.13087}, 2020.
+
+\bibitem[Gordy and Juneja(2010)]{gordy2010nested}
+Michael~B Gordy and Sandeep Juneja.
+\newblock Nested simulation in portfolio risk measurement.
+\newblock \emph{Management Science}, 56\penalty0 (10):\penalty0 1833--1848,
+  2010.
+
+\bibitem[Hong et~al.(2017)Hong, Juneja, and Liu]{hong2017kernel}
+Jeff~L Hong, Sandeep Juneja, and Guangwu Liu.
+\newblock Kernel smoothing for nested estimation with application to portfolio
+  risk measurement.
+\newblock \emph{Operations Research}, 65\penalty0 (3):\penalty0 657--673, 2017.
+
+\bibitem[Wang et~al.(2022)Wang, Wang, and Zhang]{wang2022smooth}
+Wenjia Wang, Yanyuan Wang, and Xiaowei Zhang.
+\newblock Smooth nested simulation: bridging cubic and square root convergence
+  rates in high dimensions.
+\newblock \emph{arXiv preprint arXiv:2201.02958}, 2022.
+
+\bibitem[Zhang et~al.(2021)Zhang, Liu, and Wang]{zhang2021bootstrap}
+Kun Zhang, Guangwu Liu, and Shiyu Wang.
+\newblock Bootstrap-based budget allocation for nested simulation.
+\newblock \emph{Operations Research}, 2021.
+
+\bibitem[Zhang et~al.(2022)Zhang, Feng, Liu, and Wang]{zhang2022sample}
+Kun Zhang, Mingbin Feng, Guangwu Liu, and Shiyu Wang.
+\newblock Sample recycling for nested simulation with application in portfolio
+  risk measurement.
+\newblock \emph{arXiv preprint arXiv:2203.15929}, 2022.
+
+\end{thebibliography}

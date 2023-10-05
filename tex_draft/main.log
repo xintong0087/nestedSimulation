@@ -1,0 +1,462 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.6.3)  20 SEP 2023 10:32
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**/Users/xintong0079/Documents/GitHub/dailyWork/project1_paper/main.tex
+(/Users/xintong0079/Documents/GitHub/dailyWork/project1_paper/main.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-02-24> (/usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2022/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count185
+\c@section=\count186
+\c@subsection=\count187
+\c@subsubsection=\count188
+\c@paragraph=\count189
+\c@subparagraph=\count190
+\c@figure=\count191
+\c@table=\count192
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+) (/usr/local/texlive/2022/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+ (/usr/local/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+))
+\Gm@cnth=\count193
+\Gm@cntv=\count194
+\c@Gm@tempcnt=\count195
+\Gm@bindingoffset=\dimen139
+\Gm@wd@mp=\dimen140
+\Gm@odd@mp=\dimen141
+\Gm@even@mp=\dimen142
+\Gm@layoutwidth=\dimen143
+\Gm@layoutheight=\dimen144
+\Gm@layouthoffset=\dimen145
+\Gm@layoutvoffset=\dimen146
+\Gm@dimlist=\toks17
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks18
+\inpenc@posthook=\toks19
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/subfigure/subfigure.sty
+Package: subfigure 2002/03/15 v2.1.5 subfigure package
+\subfigtopskip=\skip49
+\subfigcapskip=\skip50
+\subfigcaptopadj=\dimen147
+\subfigbottomskip=\skip51
+\subfigcapmargin=\dimen148
+\subfiglabelskip=\skip52
+\c@subfigure=\count196
+\c@lofdepth=\count197
+\c@subtable=\count198
+\c@lotdepth=\count199
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+(/usr/local/texlive/2022/texmf-dist/tex/latex/subfigure/subfigure.cfg)
+\subfig@top=\skip53
+\subfig@bottom=\skip54
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen149
+\Gin@req@width=\dimen150
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2022/03/01 v3.6b Customizing captions (AR)
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2022/03/17 v2.3b caption3 kernel (AR)
+\caption@tempdima=\dimen151
+\captionmargin=\dimen152
+\caption@leftmargin=\dimen153
+\caption@rightmargin=\dimen154
+\caption@width=\dimen155
+\caption@indent=\dimen156
+\caption@parindent=\dimen157
+\caption@hangindent=\dimen158
+Package caption Info: Standard document class detected.
+)
+\c@caption@flags=\count266
+\c@continuedfloat=\count267
+Package caption Info: subfigure package is loaded.
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2021/10/15 v2.17l AMS math features
+\@mathmargin=\skip55
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks20
+\ex@=\dimen159
+)) (/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen160
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2021/08/26 v2.02 operator names
+)
+\inf@bad=\count268
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count269
+\leftroot@=\count270
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count271
+\DOTSCASE@=\count272
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box50
+\strutbox@=\box51
+\big@size=\dimen161
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count273
+\c@MaxMatrixCols=\count274
+\dotsspace@=\muskip16
+\c@parentequation=\count275
+\dspbrk@lvl=\count276
+\tag@help=\toks21
+\row@=\count277
+\column@=\count278
+\maxfields@=\count279
+\andhelp@=\toks22
+\eqnshift@=\dimen162
+\alignsep@=\dimen163
+\tagshift@=\dimen164
+\tagwidth@=\dimen165
+\totwidth@=\dimen166
+\lineht@=\dimen167
+\@envbody=\toks23
+\multlinegap=\skip56
+\multlinetaggap=\skip57
+\mathdisplay@stack=\toks24
+LaTeX Info: Redefining \[ on input line 2938.
+LaTeX Info: Redefining \] on input line 2939.
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/eucal.sty
+Package: eucal 2009/06/22 v3.00 Euler Script fonts
+LaTeX Font Info:    Overwriting math alphabet `\EuScript' in version `bold'
+(Font)                  U/eus/m/n --> U/eus/b/n on input line 33.
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/bbold/bbold.sty
+Package: bbold 1994/04/06 Bbold symbol package
+LaTeX Font Info:    Redeclaring math alphabet \mathbb on input line 42.
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip58
+\bibsep=\skip59
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count280
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+Package: algorithm2e 2017/07/18 v5.2 algorithms environments
+\c@AlgoLine=\count281
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\algocf@hangindent=\skip60
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count282
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/relsize/relsize.sty
+Package: relsize 2013/03/29 ver 4.1
+)
+\skiptotal=\skip61
+\skiplinenumber=\skip62
+\skiprule=\skip63
+\skiphlne=\skip64
+\skiptext=\skip65
+\skiplength=\skip66
+\algomargin=\skip67
+\skipalgocfslide=\skip68
+\algowidth=\dimen168
+\inoutsize=\dimen169
+\inoutindent=\dimen170
+\interspacetitleruled=\dimen171
+\interspacealgoruled=\dimen172
+\interspacetitleboxruled=\dimen173
+\algocf@ruledwidth=\skip69
+\algocf@inoutbox=\box52
+\algocf@inputbox=\box53
+\AlCapSkip=\skip70
+\AlCapHSkip=\skip71
+\algoskipindent=\skip72
+\algocf@nlbox=\box54
+\algocf@hangingbox=\box55
+\algocf@untilbox=\box56
+\algocf@skipuntil=\skip73
+\algocf@capbox=\box57
+\algocf@lcaptionbox=\skip74
+\algoheightruledefault=\skip75
+\algoheightrule=\skip76
+\algotitleheightruledefault=\skip77
+\algotitleheightrule=\skip78
+\c@algocfline=\count283
+\c@algocfproc=\count284
+\c@algocf=\count285
+\algocf@algoframe=\box58
+\algocf@algobox=\box59
+)
+\c@definition=\count286
+\c@theorem=\count287
+\c@assumption=\count288
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2022-02-07 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count289
+\l__pdf_internal_box=\box60
+) (./main.aux)
+\openout1 = `main.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(72.26999pt, 452.9679pt, 72.26999pt)
+* v-part:(T,H,B)=(72.26999pt, 700.50687pt, 72.26999pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=452.9679pt
+* \textheight=700.50687pt
+* \oddsidemargin=0.0pt
+* \evensidemargin=0.0pt
+* \topmargin=-37.0pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+(/usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count290
+\scratchdimen=\dimen174
+\scratchbox=\box61
+\nofMPsegments=\count291
+\nofMParguments=\count292
+\everyMPshowfont=\toks25
+\MPscratchCnt=\count293
+\MPscratchDim=\dimen175
+\MPnumerator=\count294
+\makeMPintoPDFobject=\count295
+\everyMPtoPDFconversion=\toks26
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
+
+{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Trying to load font information for U+bbold on input line 80.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/bbold/Ubbold.fd) [2]
+LaTeX Font Info:    Trying to load font information for U+eus on input line 126.
+ (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/ueus.fd
+File: ueus.fd 2013/01/14 v3.01 Euler Script
+) [3] [4] [5] [6] [7] [8] [9]
+<./figures/convergence/5103.png, id=57, 578.16pt x 325.215pt>
+File: ./figures/convergence/5103.png Graphic file (type png)
+<use ./figures/convergence/5103.png>
+Package pdftex.def Info: ./figures/convergence/5103.png  used on input line 511.
+(pdftex.def)             Requested size: 317.07614pt x 178.3527pt.
+ [10 <./figures/convergence/5103.png>]
+<./figures/convergence/4103.png, id=63, 578.16pt x 325.215pt>
+File: ./figures/convergence/4103.png Graphic file (type png)
+<use ./figures/convergence/4103.png>
+Package pdftex.def Info: ./figures/convergence/4103.png  used on input line 526.
+(pdftex.def)             Requested size: 217.42265pt x 122.29773pt.
+<./figures/convergence/3103.png, id=64, 578.16pt x 325.215pt>
+File: ./figures/convergence/3103.png Graphic file (type png)
+<use ./figures/convergence/3103.png>
+Package pdftex.def Info: ./figures/convergence/3103.png  used on input line 527.
+(pdftex.def)             Requested size: 217.42265pt x 122.29773pt.
+<./figures/convergence/2103.png, id=65, 578.16pt x 325.215pt>
+File: ./figures/convergence/2103.png Graphic file (type png)
+<use ./figures/convergence/2103.png>
+Package pdftex.def Info: ./figures/convergence/2103.png  used on input line 528.
+(pdftex.def)             Requested size: 217.42265pt x 122.29773pt.
+<./figures/convergence/1103.png, id=66, 578.16pt x 325.215pt>
+File: ./figures/convergence/1103.png Graphic file (type png)
+<use ./figures/convergence/1103.png>
+Package pdftex.def Info: ./figures/convergence/1103.png  used on input line 529.
+(pdftex.def)             Requested size: 217.42265pt x 122.29773pt.
+<./figures/convergence/European Call-Regression_largeBudget.png, id=67, 578.16pt x 325.215pt>
+File: ./figures/convergence/European Call-Regression_largeBudget.png Graphic file (type png)
+<use ./figures/convergence/European Call-Regression_largeBudget.png>
+Package pdftex.def Info: ./figures/convergence/European Call-Regression_largeBudget.png  used on input line 550.
+(pdftex.def)             Requested size: 317.07614pt x 178.3527pt.
+ [11 <./figures/convergence/4103.png> <./figures/convergence/3103.png> <./figures/convergence/2103.png> <./figures/convergence/1103.png>]
+<./figures/convergence/5203.png, id=75, 578.16pt x 325.215pt>
+File: ./figures/convergence/5203.png Graphic file (type png)
+<use ./figures/convergence/5203.png>
+Package pdftex.def Info: ./figures/convergence/5203.png  used on input line 574.
+(pdftex.def)             Requested size: 217.42265pt x 122.29773pt.
+<./figures/convergence/5403.png, id=76, 578.16pt x 325.215pt>
+File: ./figures/convergence/5403.png Graphic file (type png)
+<use ./figures/convergence/5403.png>
+Package pdftex.def Info: ./figures/convergence/5403.png  used on input line 575.
+(pdftex.def)             Requested size: 217.42265pt x 122.29773pt.
+ [12 <./figures/convergence/European Call-Regression_largeBudget.png> <./figures/convergence/5203.png> <./figures/convergence/5403.png>]
+<./figures/convergence/1203.png, id=83, 578.16pt x 325.215pt>
+File: ./figures/convergence/1203.png Graphic file (type png)
+<use ./figures/convergence/1203.png>
+Package pdftex.def Info: ./figures/convergence/1203.png  used on input line 590.
+(pdftex.def)             Requested size: 217.42265pt x 122.29773pt.
+<./figures/convergence/1403.png, id=84, 578.16pt x 325.215pt>
+File: ./figures/convergence/1403.png Graphic file (type png)
+<use ./figures/convergence/1403.png>
+Package pdftex.def Info: ./figures/convergence/1403.png  used on input line 591.
+(pdftex.def)             Requested size: 217.42265pt x 122.29773pt.
+<./figures/convergence/5503.png, id=85, 578.16pt x 325.215pt>
+File: ./figures/convergence/5503.png Graphic file (type png)
+<use ./figures/convergence/5503.png>
+Package pdftex.def Info: ./figures/convergence/5503.png  used on input line 602.
+(pdftex.def)             Requested size: 317.07614pt x 178.3527pt.
+ [13 <./figures/convergence/1203.png> <./figures/convergence/1403.png> <./figures/convergence/5503.png>]
+<./figures/convergence/5101.png, id=93, 578.16pt x 325.215pt>
+File: ./figures/convergence/5101.png Graphic file (type png)
+<use ./figures/convergence/5101.png>
+Package pdftex.def Info: ./figures/convergence/5101.png  used on input line 619.
+(pdftex.def)             Requested size: 217.42265pt x 122.29773pt.
+<./figures/convergence/5102.png, id=94, 578.16pt x 325.215pt>
+File: ./figures/convergence/5102.png Graphic file (type png)
+<use ./figures/convergence/5102.png>
+Package pdftex.def Info: ./figures/convergence/5102.png  used on input line 620.
+(pdftex.def)             Requested size: 217.42265pt x 122.29773pt.
+<./figures/convergence/5104.png, id=95, 578.16pt x 325.215pt>
+File: ./figures/convergence/5104.png Graphic file (type png)
+<use ./figures/convergence/5104.png>
+Package pdftex.def Info: ./figures/convergence/5104.png  used on input line 621.
+(pdftex.def)             Requested size: 217.42265pt x 122.29773pt.
+<./figures/convergence/5105.png, id=96, 578.16pt x 325.215pt>
+File: ./figures/convergence/5105.png Graphic file (type png)
+<use ./figures/convergence/5105.png>
+Package pdftex.def Info: ./figures/convergence/5105.png  used on input line 622.
+(pdftex.def)             Requested size: 217.42265pt x 122.29773pt.
+<./figures/convergence/1101.png, id=97, 578.16pt x 325.215pt>
+File: ./figures/convergence/1101.png Graphic file (type png)
+<use ./figures/convergence/1101.png>
+Package pdftex.def Info: ./figures/convergence/1101.png  used on input line 633.
+(pdftex.def)             Requested size: 217.42265pt x 122.29773pt.
+<./figures/convergence/1102.png, id=98, 578.16pt x 325.215pt>
+File: ./figures/convergence/1102.png Graphic file (type png)
+<use ./figures/convergence/1102.png>
+Package pdftex.def Info: ./figures/convergence/1102.png  used on input line 634.
+(pdftex.def)             Requested size: 217.42265pt x 122.29773pt.
+<./figures/convergence/1104.png, id=99, 578.16pt x 325.215pt>
+File: ./figures/convergence/1104.png Graphic file (type png)
+<use ./figures/convergence/1104.png>
+Package pdftex.def Info: ./figures/convergence/1104.png  used on input line 635.
+(pdftex.def)             Requested size: 217.42265pt x 122.29773pt.
+<./figures/convergence/1105.png, id=100, 578.16pt x 325.215pt>
+File: ./figures/convergence/1105.png Graphic file (type png)
+<use ./figures/convergence/1105.png>
+Package pdftex.def Info: ./figures/convergence/1105.png  used on input line 636.
+(pdftex.def)             Requested size: 217.42265pt x 122.29773pt.
+ [14 <./figures/convergence/5101.png> <./figures/convergence/5102.png> <./figures/convergence/5104.png> <./figures/convergence/5105.png> <./figures/convergence/1101.png> <./figures/convergence/1102.png> <./figures/convergence/1104.png> <./figures/convergence/1105.png>]
+<./figures/time/European Call - total_time.png, id=112, 578.16pt x 325.215pt>
+File: ./figures/time/European Call - total_time.png Graphic file (type png)
+<use ./figures/time/European Call - total_time.png>
+Package pdftex.def Info: ./figures/time/European Call - total_time.png  used on input line 682.
+(pdftex.def)             Requested size: 217.42265pt x 122.29773pt.
+<./figures/time/Geometric Asian - total_time.png, id=113, 578.16pt x 325.215pt>
+File: ./figures/time/Geometric Asian - total_time.png Graphic file (type png)
+<use ./figures/time/Geometric Asian - total_time.png>
+Package pdftex.def Info: ./figures/time/Geometric Asian - total_time.png  used on input line 683.
+(pdftex.def)             Requested size: 217.42265pt x 122.29773pt.
+ [15 <./figures/time/European Call - total_time.png> <./figures/time/Geometric Asian - total_time.png>]
+<./figures/time/European Call-Cross Validation Cost.png, id=119, 578.16pt x 325.215pt>
+File: ./figures/time/European Call-Cross Validation Cost.png Graphic file (type png)
+<use ./figures/time/European Call-Cross Validation Cost.png>
+Package pdftex.def Info: ./figures/time/European Call-Cross Validation Cost.png  used on input line 698.
+(pdftex.def)             Requested size: 217.42265pt x 122.29773pt.
+<./figures/time/Geometric Asian-Cross Validation Cost.png, id=120, 578.16pt x 325.215pt>
+File: ./figures/time/Geometric Asian-Cross Validation Cost.png Graphic file (type png)
+<use ./figures/time/Geometric Asian-Cross Validation Cost.png>
+Package pdftex.def Info: ./figures/time/Geometric Asian-Cross Validation Cost.png  used on input line 699.
+(pdftex.def)             Requested size: 217.42265pt x 122.29773pt.
+ [16 <./figures/time/European Call-Cross Validation Cost.png> <./figures/time/Geometric Asian-Cross Validation Cost.png>] (./main.bbl) [17] (./main.aux) ) 
+Here is how much of TeX's memory you used:
+ 6373 strings out of 478268
+ 107182 string characters out of 5846348
+ 418791 words of memory out of 5000000
+ 24477 multiletter control sequences out of 15000+600000
+ 480971 words of font info for 75 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 55i,19n,63p,519b,306s stack positions out of 10000i,1000n,20000p,200000b,200000s
+{/usr/local/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/local/texlive/2022/texmf-dist/fonts/type1/public/bbold-type1/bbold10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/bbold-type1/bbold7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/euler/eusm10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/euler/eusm7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/symbols/msam7.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on main.pdf (17 pages, 1315275 bytes).
+PDF statistics:
+ 238 PDF objects out of 1000 (max. 8388607)
+ 119 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 116 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -340,3 +340,7 @@ def crossValidation(X, y, model_name, n_splits=5):
         raise ValueError("Model name not recognized.")
     
     return res
+
+def fun():
+
+    return None

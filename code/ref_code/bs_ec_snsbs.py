@@ -125,11 +125,11 @@ def SNS_Euro_Call_BootStrap(Gamma, n_front_vec, n_back_vec, d, S_0, K, mu, sigma
     return n_front_opt.astype(int), n_back_opt.astype(int)
 
 
-def cal_RRMSE(Gamma, n_front, n_back, d, S_0, K, mu, sigma, r, tau, T, alpha, L0):
+def cal_RRMSE(Gamma, n_front, n_back, d, S_0, K, mu, sigma, r, tau, T, level_list, L0):
 
     n_front_opt, n_back_opt = SNS_Euro_Call_BootStrap(Gamma, n_front, n_back,
                                                       d, S_0, K, mu, sigma, r, tau, T,
-                                                      L0, 500, alpha)
+                                                      L0, 500, )
 
     loss = SNS_Euro_Call(n_front_opt[0], n_back_opt[0], d, S_0, K, mu, sigma, r, tau, T)
     indicator = np.mean((loss > L0))
@@ -142,7 +142,9 @@ def cal_RRMSE(Gamma, n_front, n_back, d, S_0, K, mu, sigma, r, tau, T, alpha, L0
 
     loss = SNS_Euro_Call(n_front_opt[3], n_back_opt[3], d, S_0, K, mu, sigma, r, tau, T)
     loss.sort()
-    VaR = loss[int(np.ceil((1 - alpha) * n_front_opt[3]))]
+
+    for level in level_list:
+        VaR = loss[int(np.ceil((1 - alpha) * n_front_opt[3]))]
 
     loss = SNS_Euro_Call(n_front_opt[4], n_back_opt[4], d, S_0, K, mu, sigma, r, tau, T)
     loss.sort()
@@ -164,14 +166,11 @@ tau_11 = 3/50
 T_11 = 1
 alpha_11 = 0.1
 
-result_true = np.array(pd.read_csv("data/trueValue_11.csv")).flatten()[1:]
+result_true = np.array(pd.read_csv("./trueValue_11.csv")).flatten()[1:]
 
 L0_11 = result_true[3]
 
-Gamma_list = []
-for i in range(2):
-    Gamma_list = Gamma_list + list(np.arange(1, 10) * 10 ** (i + 3))
-Gamma_list = Gamma_list + [10 ** (i + 4)]
+Gamma_list = [int(1000 * (2**i)) for i in range(11)]
 Gamma = np.array(Gamma_list)
 n_trials = len(Gamma)
 
@@ -179,7 +178,7 @@ n_front_vec = [np.arange(50, 101, 5)] * n_trials
 n_back_vec = [np.arange(50, 101, 5)] * n_trials
 result_table = np.zeros([n_trials, 5])
 
-n_rep = 150
+n_rep = 1000
 
 for _j in range(n_trials):
 
@@ -202,4 +201,4 @@ for _j in range(n_trials):
     print(RRMSE)
 
 print(result_table)
-np.save("data/result_112.npy", result_table)
+np.save("../results/result_112_logScale.npy", result_table)

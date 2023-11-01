@@ -6,6 +6,56 @@ def generate_cor_mat(d, rho):
     return np.ones((d, d)) * rho + np.identity(d) * (1 - rho)
 
 
+def Heston_front(n_front, S_0, V_0, mu, rho, kappa, theta, sigma, tau, step_size=1/253):
+
+    n_step = int(tau // step_size) + 1
+    mu_Z = np.array([0, 0])
+    cov_Z = np.array([[1, rho], [rho, 1]])
+    
+    S_front = np.zeros([n_front, n_step + 1])
+    S_front[:, 0] = np.array(S_0)
+    V = np.zeros([n_front, n_step + 1])
+    V[:, 0] = np.array(V_0)
+
+    Z = np.random.multivariate_normal(mu_Z, cov_Z, [n_front, n_step])
+
+    for k in range(1, n_step + 1):
+        S_front[:, k] = S_front[:, k - 1] * np.exp((mu - (1/2) * V[:, k-1]) * step_size 
+                                                   + np.sqrt(V[:, k-1] * step_size) 
+                                                   * Z[:, k-1, 0])
+        V[:, k] = np.maximum(V[:, k - 1] 
+                             + kappa * (theta - V[:, k - 1]) * step_size 
+                             + sigma * np.sqrt(V[:, k - 1] * step_size) * Z[:, k-1, 1], 0)
+
+    return S_front, V
+
+
+def Heston_back(n_front, n_back, S_tau, V_tau, r, rho, kappa, theta, sigma, T, step_size=1/253):
+
+    n_step = int(T // step_size) + 1
+    mu_Z = np.array([0, 0])
+    cov_Z = np.array([[1, rho], [rho, 1]])
+
+    S_back = np.zeros([n_front, n_back, n_step + 1])
+    V = np.zeros([n_front, n_back, n_step + 1])
+    for j in range(n_back):
+        S_back[:, j, 0] = S_tau[:, -1]
+        V[:, j, 0] = V_tau[:, -1]
+    
+    Z = np.random.multivariate_normal(mu_Z, cov_Z, [n_front, n_back, n_step])
+
+    for k in range(1, n_step + 1):
+
+        S_back[:, :, k] = S_back[:, :, k - 1] * np.exp((r - (1/2) * V[:, :, k-1]) * step_size 
+                                                        + np.sqrt(V[:, :, k-1] * step_size) 
+                                                        * Z[:, :, k-1, 0])
+        V[:, :, k] = np.maximum(V[:, :, k - 1] 
+                                + kappa * (theta - V[:, :, k - 1] ) * step_size 
+                                + sigma * np.sqrt(V[:, :, k - 1]  * step_size) * Z[:, :, k-1, 1], 0)
+    
+    return S_back, V
+
+
 def GBM_front(n_front, d, S_0, drift_vec, diffusion_mat, tau, step_size=1 / 253, path=False):
     drift_vec = np.full(d, drift_vec)
     diffusion_mat = np.array(diffusion_mat)

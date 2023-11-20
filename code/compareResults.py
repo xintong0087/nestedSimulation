@@ -50,7 +50,7 @@ def plotDF(df, mainCategory, text="", saveFolder="./figures"):
     plt.savefig(f"{saveFolder}/{mainCategory}.png")
     plt.close()
 
-    print(f"Figure saved to {saveFolder}/{mainCategory}.png")
+    print(f"Figure saved to {saveFolder}/{mainCategory}.png. Please change the file name before running the code again.")
 
     return None
 
@@ -219,7 +219,7 @@ elif mainCategory == "asset models":
         r = input(f"Please enter the risk measure you want to compare from: {riskMeasures} > ")
 
         if (r == "VaR") or (r == "CVaR"):
-            l = float(input(f"Please enter the level of VaR or CVaR you want to compare from: {levels} > "))
+            l = input(f"Please enter the level of VaR or CVaR you want to compare from: {levels} > ")
             rmName = f"{l}-{r}"
         else:
             rmName = r

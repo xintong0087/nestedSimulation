@@ -4,7 +4,7 @@ import pandas as pd
 from joblib import Parallel, delayed
 
 
-def ComputeTrueLoss(n_front, d, S_0, K, mu, sigma, r, tau, T, alpha=0.1):
+def ComputeTrueLoss(n_front, d, S_0, K, mu, sigma, r, tau, T, level_list=[0.8, 0.9, 0.95, 0.99, 0.996]):
 
     rho = 0.3
     cor_mat = methods.generate_cor_mat(d, rho)
@@ -34,44 +34,56 @@ def ComputeTrueLoss(n_front, d, S_0, K, mu, sigma, r, tau, T, alpha=0.1):
 
     loss_true.sort()
 
-    L0 = loss_true[int(np.ceil((1 - alpha) * n_front))]
+    L0 = loss_true[int(np.ceil(0.9 * n_front))]
 
-    indicator_true = alpha
+    indicator_true = 0.9
     hockey_true = np.mean(np.maximum(loss_true - L0, 0))
     quadratic_true = np.mean((loss_true - L0) ** 2)
-    CVaR = np.mean(loss_true[loss_true > L0])
 
-    return L0, indicator_true, hockey_true, quadratic_true, CVaR
+    VaR = {}
+    CVaR = {}
+    for level in level_list:
+        VaR[level] = loss_true[int(np.ceil(level * n_front)) - 1] 
+        CVaR[level] = np.mean(loss_true[loss_true >= VaR[level]])
+
+    return indicator_true, hockey_true, quadratic_true, VaR, CVaR
 
 
-d_11 = 20
-sigma_11 = 0.1
+d = 20
+sigma = 0.1
 n_cmc = 10**7
-S_0_11 = 100
-K_11 = [90, 100, 110]
-mu_11 = 0.08
-r_11 = 0.05
-tau_11 = 3/50
-T_11 = 1
+S_0 = 100
+K = [90, 100, 110]
+mu = 0.08
+r = 0.05
+tau = 3/50
+T = 1
 
 
-L0_11, indicator_true_11, hockey_true_11, quadratic_true_11, CVaR_11 = ComputeTrueLoss(n_front=n_cmc,
-                                                                                       d=d_11,
-                                                                                       S_0=S_0_11,
-                                                                                       K=K_11,
-                                                                                       mu=mu_11,
-                                                                                       sigma=sigma_11,
-                                                                                       r=r_11,
-                                                                                       tau=tau_11,
-                                                                                       T=T_11,
-                                                                                       alpha=0.1)
+indicator_true, hockey_true, quadratic_true, VaR, CVaR = ComputeTrueLoss(n_front=n_cmc,
+                                                                         d=d,
+                                                                         S_0=S_0,
+                                                                         K=K,
+                                                                         mu=mu,
+                                                                         sigma=sigma,
+                                                                         r=r,
+                                                                         tau=tau,
+                                                                         T=T,
+                                                                         level_list=[0.8, 0.9, 0.95, 0.99, 0.996])
 
-df = pd.DataFrame([indicator_true_11, hockey_true_11, quadratic_true_11, L0_11, CVaR_11],
-                  index=["Indicator",
-                         "Hockey",
-                         "Quadratic",
-                         "VaR",
-                         "CVaR"],
-                  columns=[n_cmc]).T
+# flatten VaR and CVaR to a list append to indicator, hockey and quadratic
+
+result_true = [indicator_true, hockey_true, quadratic_true]
+label_true = ["indicator", "hockeyStick", "quadratic"]
+for level in [0.8, 0.9, 0.95, 0.99, 0.996]:
+    result_true.append(VaR[level])
+    result_true.append(CVaR[level])
+    label_true.append("VaR_" + str(level))
+    label_true.append("CVaR_" + str(level))
+
+df = pd.DataFrame(result_true,
+                  index=label_true,
+                  columns=["True Value"]).T
+
 print(df)
-df.to_csv("data/trueValue_11.csv")
+df.to_csv("./data/trueValue_11.csv")

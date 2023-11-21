@@ -17,10 +17,12 @@ def approxCR(df):
 
     for col in df.columns:
         
-        length = len(df[col].values)
+        col_values = df[col].dropna().values
+
+        length = len(col_values)
 
         x = np.log(Gammas).reshape(-1, 1)[:length]
-        y = np.log(df[col].values)
+        y = np.log(col_values)
 
         reg = LinearRegression().fit(x, y)
 
@@ -50,7 +52,7 @@ def plotDF(df, mainCategory, text="", saveFolder="./figures"):
     plt.savefig(f"{saveFolder}/{mainCategory}.png")
     plt.close()
 
-    print(f"Figure saved to {saveFolder}/{mainCategory}.png. Please change the file name before running the code again.")
+    print(f"Figure saved to {saveFolder}/{mainCategory}.png")
 
     return None
 
@@ -219,7 +221,7 @@ elif mainCategory == "asset models":
         r = input(f"Please enter the risk measure you want to compare from: {riskMeasures} > ")
 
         if (r == "VaR") or (r == "CVaR"):
-            l = input(f"Please enter the level of VaR or CVaR you want to compare from: {levels} > ")
+            l = float(input(f"Please enter the level of VaR or CVaR you want to compare from: {levels} > "))
             rmName = f"{l}-{r}"
         else:
             rmName = r
@@ -240,6 +242,5 @@ elif mainCategory == "asset models":
             plotDF(df_all**2, mainCategory, text=f"({p}, {o}, {r}, d = {d})")
         
         except:
-                
             pass
 
